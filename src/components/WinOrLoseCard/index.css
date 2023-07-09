@@ -1,0 +1,53 @@
+/* Write your code here. */
+
+.result-card {
+  background-color: #ffffff33;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #ffffff;
+}
+
+.result-img {
+  height: 300px;
+}
+h1 {
+  color: #ffffff;
+}
+
+.again-button {
+  background-color: #ffce27;
+  color: #3d3d3d;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: 1px solid #ffffff;
+}
+
+.score-show {
+  font-weight: 700;
+  color: #6a59ff;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+@media (max-width: 576px) {
+  result-card {
+    padding: 20px;
+    min-width: 200px;
+  }
+
+  .result-img {
+    height: 150px;
+  }
+  score-show {
+    font-size: 20px;
+  }
+
+  h1 {
+    color: #ffffff;
+    font-size: 20px;
+  }
+
+  again-button {
+  }
+}
