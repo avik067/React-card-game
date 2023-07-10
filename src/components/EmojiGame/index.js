@@ -83,14 +83,18 @@ class EmojiGame extends Component {
       ))
     } else {
       console.log('over')
-      content = <WinOrLoseCard score={score} restart={this.restartGame} />
+      content = (
+        <WinOrLoseCard score={score} restart={this.restartGame} key="4" />
+      )
     }
 
     return (
-      <div className="main">
-        <NavBar sc={score} tp={top} key={4} />
-        <div className="middle row">{content}</div>
-      </div>
+      <ul className="main">
+        <NavBar sc={score} tp={top} key="sd45" />
+        <div className="middle row">
+          <ul className="row">{content}</ul>
+        </div>
+      </ul>
     )
   }
 }
