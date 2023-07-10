@@ -36,7 +36,7 @@ class EmojiGame extends Component {
 
   storeId = idPassed => {
     const {clickedIdList, top, score} = this.state
-    const a = top < score ? score : top
+    const a = top <= score ? score : top
     if (clickedIdList.length === 0) {
       this.setState(pre => ({
         clickedIdList: [...pre.clickedIdList, idPassed],
@@ -67,6 +67,16 @@ class EmojiGame extends Component {
       score: 0,
     }))
 
+  checkIfAlready = () => {
+    console.log('alrady over')
+
+    const {clickedIdList} = this.state
+    const r =
+      clickedIdList.length === 12
+        ? this.setState(pre => ({...pre, gameOver: !pre.gameOver}))
+        : this.setState(pre => ({...pre}))
+  }
+
   listRandom = () => {
     const {emojiList} = this.state
     emojiList.sort(() => Math.random() - 0.5)
@@ -75,9 +85,10 @@ class EmojiGame extends Component {
 
   render() {
     const random = this.listRandom()
-    const {score, top, gameOver} = this.state
+    const {score, top, gameOver, clickedIdList} = this.state
+
     let content
-    if (!gameOver) {
+    if (!gameOver && clickedIdList.length !== 12) {
       content = random.map(each => (
         <EmojiCard key={each.id} details={each} trigger={this.storeId} />
       ))
