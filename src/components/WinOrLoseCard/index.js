@@ -5,7 +5,7 @@ const WinOrLoseCard = props => {
   console.log(score)
 
   const playAgain = () => {
-    console.log('hi')
+    console.log('play again')
     restart()
   }
 

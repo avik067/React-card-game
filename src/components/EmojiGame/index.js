@@ -67,15 +67,15 @@ class EmojiGame extends Component {
       score: 0,
     }))
 
-  checkIfAlready = () => {
-    console.log('alrady over')
+  //   checkIfAlready = () => {
+  //     // console.log('alrady over')
 
-    const {clickedIdList} = this.state
-    const r =
-      clickedIdList.length === 12
-        ? this.setState(pre => ({...pre, gameOver: !pre.gameOver}))
-        : this.setState(pre => ({...pre}))
-  }
+  //     const {clickedIdList} = this.state
+  //     const r =
+  //       clickedIdList.length === 12
+  //         ? this.setState(pre => ({...pre, gameOver: !pre.gameOver}))
+  //         : this.setState(pre => ({...pre}))
+  //   }
 
   listRandom = () => {
     const {emojiList} = this.state
@@ -89,24 +89,41 @@ class EmojiGame extends Component {
 
     let content
     if (!gameOver && clickedIdList.length !== 12) {
-      content = random.map(each => (
-        <EmojiCard key={each.id} details={each} trigger={this.storeId} />
-      ))
-    } else {
-      console.log('over')
       content = (
-        <WinOrLoseCard score={score} restart={this.restartGame} key="4" />
+        <ul className="main">
+          <NavBar sc={score} tp={top} key="sd45" />
+          <div className="middle row">
+            <ul className="row">
+              {random.map(each => (
+                <EmojiCard
+                  key={each.id}
+                  details={each}
+                  trigger={this.storeId}
+                />
+              ))}
+            </ul>
+          </div>
+        </ul>
+      )
+    } else {
+      //   console.log('over')
+      content = (
+        <ul className="main">
+          <NavBar sc={score} tp={score} key="sd45" />
+          <div className="middle row">
+            <ul className="row">
+              <WinOrLoseCard
+                score={score}
+                restart={this.restartGame}
+                key="e43"
+              />
+            </ul>
+          </div>
+        </ul>
       )
     }
 
-    return (
-      <ul className="main">
-        <NavBar sc={score} tp={top} key="sd45" />
-        <div className="middle row">
-          <ul className="row">{content}</ul>
-        </div>
-      </ul>
-    )
+    return content
   }
 }
 
