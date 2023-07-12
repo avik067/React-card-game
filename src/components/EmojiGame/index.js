@@ -109,7 +109,6 @@ class EmojiGame extends Component {
       //   console.log('over')
       content = (
         <ul className="main">
-          <NavBar sc={score} tp={score} key="sd45" />
           <div className="middle row">
             <ul className="row">
               <WinOrLoseCard
