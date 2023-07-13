@@ -45,10 +45,17 @@ class EmojiGame extends Component {
     } else {
       const result = clickedIdList.find(each => each === idPassed)
 
-      if (result) {
+      if (result || result === 0) {
         this.setState(pre => ({
           top: a,
           gameOver: !pre.gameOver,
+        }))
+      } else if (clickedIdList.length === 11) {
+        this.setState(pre => ({
+          clickedIdList: [...pre.clickedIdList, idPassed],
+          score: pre.score + 1,
+          gameOver: !pre.gameOver,
+          top: 12,
         }))
       } else {
         this.setState(pre => ({
@@ -59,23 +66,18 @@ class EmojiGame extends Component {
     }
   }
 
-  restartGame = () =>
+  restartGame = () => {
+    const {top, score} = this.state
+    const newTop = score > top ? score : top
+    console.log(newTop)
     this.setState(pre => ({
       ...pre,
       clickedIdList: [],
       gameOver: !pre.gameOver,
       score: 0,
+      top: newTop,
     }))
-
-  //   checkIfAlready = () => {
-  //     // console.log('alrady over')
-
-  //     const {clickedIdList} = this.state
-  //     const r =
-  //       clickedIdList.length === 12
-  //         ? this.setState(pre => ({...pre, gameOver: !pre.gameOver}))
-  //         : this.setState(pre => ({...pre}))
-  //   }
+  }
 
   listRandom = () => {
     const {emojiList} = this.state
@@ -88,7 +90,7 @@ class EmojiGame extends Component {
     const {score, top, gameOver, clickedIdList} = this.state
 
     let content
-    if (!gameOver && clickedIdList.length !== 12) {
+    if (!gameOver && clickedIdList.length <= 12) {
       content = (
         <ul className="main">
           <NavBar sc={score} tp={top} key="sd45" />
