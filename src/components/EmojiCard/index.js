@@ -13,7 +13,6 @@ const EmojiCard = props => {
 
   return (
     <li className="em-container row">
-      {id}
       <button type="button" className="emo-button" onClick={clicked}>
         <img className="emoj" src={emojiUrl} alt={emojiName} />
       </button>
